@@ -64,7 +64,7 @@ localhost:4000/auth/login
 //REDIRECT TO THE LOGIN(Authentication) MICROSERVICE
 app.use('/auth', (req, res) => {
     console.log("INSIDE API GATEWAY LOGIN ROUTE")
-    proxy.web(req, res, { target: 'http://44.203.91.177:5000' });
+    proxy.web(req, res, { target: 'http://34.227.9.35:5000' });
 })
 
 /*
@@ -111,12 +111,12 @@ app.use('/supervisor',authToken, authRole('supervisor'), (req, res) => {
 
 app.use('/HR', authToken, authRole('HR'),(req, res) => {
     console.log("INSIDE API GATEWAY HR ROUTE")
-    proxy.web(req, res, { target: 'http://34.205.31.4:5005' });
+    proxy.web(req, res, { target: 'http://3.80.186.177:5005' });
 })
 
 app.use('/employee', authToken, authRole('employee'),(req, res) => {
     console.log("INSIDE API GATEWAY EMPLOYEE ROUTE")
-    proxy.web(req, res, { target: 'http://34.205.31.4:5004' });
+    proxy.web(req, res, { target: 'http://3.80.186.177:5004' });
 })
 
 app.listen(4000, () => {
