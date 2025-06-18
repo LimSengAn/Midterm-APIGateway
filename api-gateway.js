@@ -47,7 +47,7 @@ localhost:4000/reg/registration
 
 app.use('/reg', (req, res) => {
     console.log("INSIDE API GATEWAY REGISTRATION ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5000' });
+    proxy.web(req, res, { target: 'http://44.203.91.177:5000' });
 })
 
 /*
@@ -64,7 +64,7 @@ localhost:4000/auth/login
 //REDIRECT TO THE LOGIN(Authentication) MICROSERVICE
 app.use('/auth', (req, res) => {
     console.log("INSIDE API GATEWAY LOGIN ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5000' });
+    proxy.web(req, res, { target: 'http://44.203.91.177:5000' });
 })
 
 /*
@@ -83,7 +83,7 @@ localhost:4000/employer/searchemployee/Tim
 //REDIRECT TO THE EMPLOYER MICROSERVICE
 app.use('/CEO', authToken, authRole('CEO'),(req, res) => {
     console.log("INSIDE API GATEWAY CEO ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5001' });
+    proxy.web(req, res, { target: 'http://34.239.103.123:5001' });
 })
 
 /*
@@ -106,7 +106,17 @@ localhost:4000/student/submitassignment
 //REDIRECT TO THE STUDENT MICROSERVICE
 app.use('/supervisor',authToken, authRole('supervisor'), (req, res) => {
     console.log("INSIDE API GATEWAY SUPERVISOR ROUTE")
-    proxy.web(req, res, { target: 'http://localhost:5002' });
+    proxy.web(req, res, { target: 'http://34.239.103.123:5002' });
+})
+
+app.use('/HR', authToken, authRole('HR'),(req, res) => {
+    console.log("INSIDE API GATEWAY HR ROUTE")
+    proxy.web(req, res, { target: 'http://34.205.31.4:5003' });
+})
+
+app.use('/employee', authToken, authRole('employee'),(req, res) => {
+    console.log("INSIDE API GATEWAY EMPLOYEE ROUTE")
+    proxy.web(req, res, { target: 'http://34.205.31.4:5004' });
 })
 
 app.listen(4000, () => {
